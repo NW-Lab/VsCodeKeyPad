@@ -30,16 +30,34 @@ VS Code用のタッチスクリーンキーパッドです。GitHub Copilotの�
 
 ## セットアップ手順
 
+> **Windows ユーザー向け**: 詳細なWindows固有の手順については [Windows セットアップガイド](docs/WINDOWS_SETUP.md) をご覧ください。
+
 ### 1. 開発環境の準備
 
+#### すべてのOS共通
 ```bash
-# PlatformIOのインストール (VS Code拡張機能推奨)
-# または Arduino IDE + ESP32ボードパッケージ
-
 # このリポジトリをクローン
 git clone https://github.com/NW-Lab/VsCodeKeyPad.git
 cd VsCodeKeyPad
 ```
+
+#### PlatformIOのインストール方法
+
+**推奨: VS Code拡張機能**
+1. VS CodeでPlatformIO IDE拡張機能をインストール
+2. 自動的にPlatformIO Coreもインストールされます
+
+**コマンドライン:**
+```bash
+# Python pip経由 (Linux/Mac/Windows)
+pip install platformio
+```
+
+**Windows固有の注意点:**
+- PowerShell実行ポリシーの設定が必要な場合があります:
+  ```powershell
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  ```
 
 ### 2. ライブラリの自動インストール
 
@@ -55,13 +73,32 @@ PlatformIOを使用する場合、必要なライブラリは自動的にイン�
 
 ### 4. コンパイルと書き込み
 
-```bash
-# PlatformIOの場合
-pio run --target upload
+#### PlatformIOを使用する場合
 
-# Arduino IDEの場合
-# main.cppの内容をArduino IDEにコピーして書き込み
+**Linux/Mac:**
+```bash
+# ビルドテスト
+./build_test.sh
+
+# アップロード
+pio run --target upload
 ```
+
+**Windows:**
+```cmd
+# ビルドテスト (コマンドプロンプト)
+build_test.bat
+
+# ビルドテスト (PowerShell)
+.\build_test.ps1
+
+# アップロード
+pio run --target upload
+```
+
+#### Arduino IDEを使用する場合
+`arduino_ide_version/VsCodeKeyPad.ino` をArduino IDEで開いてアップロード
+詳細は `arduino_ide_version/README_Arduino.md` を参照
 
 ### 5. ペアリング手順
 
@@ -89,6 +126,23 @@ pio run --target upload
 キー配置やショートカットは`src/display_manager.cpp`の`setupKeys()`関数で変更できます。
 
 ## トラブルシューティング
+
+### Windows固有の問題
+
+#### "build_test.bat は認識されません" エラー
+- コマンドプロンプトでプロジェクトフォルダに移動してから実行
+- または PowerShell で `.\build_test.ps1` を使用
+
+#### PowerShellで "実行ポリシー" エラー
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+#### COM ポートが認識されない
+1. デバイスマネージャーでCP2102/CH340ドライバーを確認
+2. 必要に応じてUSB-Serialドライバーをインストール
+
+### 共通の問題
 
 ### Bluetoothが接続できない
 - PCのBluetoothを一度オフ/オンしてください
