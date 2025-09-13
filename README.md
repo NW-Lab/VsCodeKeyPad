@@ -27,6 +27,7 @@ VS Code用のタッチスクリーンキーパッドです。GitHub Copilotの�
 
 - **Lilygo H621**: ESP32 + 2.4" ILI9341 TFT + タッチスクリーン
 - microUSBケーブル (プログラム書き込み・電源用)
+- **3Dプリンタケース** (オプション): STLファイル提供済み
 
 ## セットアップ手順
 
@@ -139,3 +140,26 @@ MIT License
 - [ ] カスタムキー設定機能
 - [ ] バックライト自動調整
 - [ ] バッテリー駆動対応
+
+## 🎯 3Dプリンタ用ケース
+
+VS Code KeyPad用の3Dプリンタケースが利用可能です！
+
+### STLファイル
+- `3d_models/keypad_case_bottom.stl` - メインケースボディ
+- `3d_models/keypad_case_top.stl` - トップカバー  
+- `3d_models/keypad_display_bezel.stl` - ディスプレイベゼル
+
+### クイックスタート
+```bash
+# STLファイルをダウンロード
+git clone https://github.com/NW-Lab/VsCodeKeyPad.git
+cd VsCodeKeyPad/3d_models/
+
+# PLA推奨設定で印刷
+# - レイヤー高: 0.2mm
+# - 充填率: 25%  
+# - サポート: bottomのみ必要
+```
+
+詳細な印刷手順は [`docs/3d_printing/`](docs/3d_printing/) を参照してください。
