@@ -2,6 +2,8 @@
 
 ## Arduino IDE でのセットアップ手順
 
+> **Note**: このガイドはWindows、Mac、Linux すべてのOSで使用できます。Windows固有の詳細については [Windows セットアップガイド](../docs/WINDOWS_SETUP.md) も参照してください。
+
 ### 1. ESP32ボードパッケージのインストール
 
 1. Arduino IDEを開く
@@ -31,11 +33,15 @@ Arduino IDE のライブラリマネージャーから以下をインストー�
 #### 方法1: User_Setup.h をコピー (推奨)
 1. このリポジトリの `User_Setup.h` をコピー
 2. Arduino ライブラリフォルダを開く:
-   - Windows: `Documents\Arduino\libraries\TFT_eSPI\`
-   - Mac: `~/Documents/Arduino/libraries/TFT_eSPI/`
-   - Linux: `~/Arduino/libraries/TFT_eSPI/`
+   - **Windows**: `Documents\Arduino\libraries\TFT_eSPI\` または `C:\Users\[ユーザー名]\Documents\Arduino\libraries\TFT_eSPI\`
+   - **Mac**: `~/Documents/Arduino/libraries/TFT_eSPI/`
+   - **Linux**: `~/Arduino/libraries/TFT_eSPI/`
 3. 既存の `User_Setup.h` をバックアップ
 4. コピーした `User_Setup.h` で置き換える
+
+**Windows での注意点:**
+- Arduino IDEがPortable版の場合、パスが異なる場合があります
+- ファイルエクスプローラーで隠しフォルダの表示を有効にしてください
 
 #### 方法2: User_Setup_Select.h を編集
 1. `TFT_eSPI/User_Setup_Select.h` を開く
